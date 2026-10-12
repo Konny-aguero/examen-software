@@ -1,0 +1,48 @@
+<h2>Nueva Cita Médica</h2>
+
+<form (ngSubmit)="guardar()">
+
+  <label>ID del paciente</label>
+  <input
+    type="number"
+    [(ngModel)]="pacienteId"
+    name="pacienteId"
+    min="1"
+    required
+  >
+
+  <label>ID del doctor</label>
+  <input
+    type="number"
+    [(ngModel)]="doctorId"
+    name="doctorId"
+    min="1"
+    required
+  >
+
+  <label>Nivel de prioridad</label>
+  <select [(ngModel)]="nivelPrioridad" name="nivelPrioridad">
+    <option value="ALTA">Alta</option>
+    <option value="MEDIA">Media</option>
+    <option value="BAJA">Baja</option>
+  </select>
+
+  <label>Motivo de consulta</label>
+  <input
+    [(ngModel)]="motivoConsulta"
+    name="motivoConsulta"
+    required
+  >
+
+  <label>Monto de consulta</label>
+  <input
+    type="number"
+    [(ngModel)]="montoConsulta"
+    name="montoConsulta"
+    min="0"
+    required
+  >
+
+  <button type="submit">Registrar cita</button>
+
+</form>

@@ -1,0 +1,51 @@
+<h2>Dashboard de Citas Médicas</h2>
+
+<select #filtro (change)="filtrar(filtro.value)">
+  <option value="TODAS">Todas</option>
+  <option value="ALTA">Alta</option>
+  <option value="MEDIA">Media</option>
+  <option value="BAJA">Baja</option>
+</select>
+
+<div class="tabla-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Paciente</th>
+        <th>Doctor</th>
+        <th>Prioridad</th>
+        <th>Motivo</th>
+        <th>Monto</th>
+        <th>Estado</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (cita of citasFiltradas(); track cita.id) {
+        <tr>
+          <td>{{ cita.codigoCita }}</td>
+          <td>{{ cita.nombrePaciente }}</td>
+          <td>{{ cita.nombreDoctor }}</td>
+          <td>{{ cita.nivelPrioridad }}</td>
+          <td>{{ cita.motivoConsulta }}</td>
+          <td>{{ cita.montoConsulta | currency:'CRC':'₡' }}</td>
+          <td>
+            <span class="badge" [ngClass]="cita.estado">
+              {{ cita.estado }}
+            </span>
+          </td>
+          <td>
+            @if (cita.estado === 'PENDIENTE' ||
+                 cita.estado === 'EN_ATENCION') {
+              <button (click)="avanzarEstado(cita)">
+                Avanzar
+              </button>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,17 @@
+label{
+    display: block;
+    width:7%;
+    background-color: purple;
+    color: white;
+    border-radius: 5%;
+    margin-bottom: 0.1%;
+}
+button{
+    display: block;
+}
+input{
+    margin-bottom: 0.5%;
+}
+select{
+    margin-bottom: 0.5%;
+}
